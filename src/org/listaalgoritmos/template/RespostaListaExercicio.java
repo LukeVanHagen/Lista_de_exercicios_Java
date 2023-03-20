@@ -1,6 +1,6 @@
 package org.listaalgoritmos.template;
 
-
+import java.util.Iterator;
 
 public class RespostaListaExercicio {
 	
@@ -17,11 +17,13 @@ public class RespostaListaExercicio {
 	 * o método deve retornar uma variável resultado do tipo float.
 	 * @param peso
 	 * @param altura
-	 * @return resultado
+	 * @	return resultado
 	 */
 	public static float calcularImc(float peso, float altura) 
 	{
-		return 0f;
+		float calcularImc = peso / (altura*altura) ;
+		float resultado = calcularImc ;
+					return resultado ;
 	}
 	
 	/**
@@ -32,9 +34,12 @@ public class RespostaListaExercicio {
 	 * @param altura
 	 * @return areaTrapezio
 	 */
-	public static float calcularAreaTrapezio(float baseMaior, float baseMenor, float altura) 
-	{	
-		return 0f;
+	public static float calcularAreaTrapezio(float baseMaior, float baseMenor, float altura) {
+		
+		
+		float areaTrapezio =(baseMaior + baseMenor) * altura / 2;
+		
+		return areaTrapezio ;
 	}
 	
 	/**
@@ -47,7 +52,12 @@ public class RespostaListaExercicio {
 	 */
 	public static int maiorEntreDoisInteiros(int a, int b) 
 	{
-		return 0;
+		
+		if(a > b ) {
+			return a ;
+		} else {
+			return b ;
+		}
 	}
 	
 	/**
@@ -59,7 +69,11 @@ public class RespostaListaExercicio {
 	 */
 	public static boolean verificarParImpar(int numero) 
 	{
-		return false;		
+		if((numero % 2)== 0) {
+			return true ;
+		}else {
+			return false ;
+		}		
 	}
 	
 	/**
@@ -69,7 +83,15 @@ public class RespostaListaExercicio {
 	 * @return media
 	 */
 	public static float calcularMediaNotas(float[] notas) {
-		return 0f;
+		
+		int numero = 0 ;
+		
+		for (int i = 0; i < notas.length; i++) {
+			
+			numero += notas[i] ;
+		}
+		float media = numero / notas.length ;
+		return media ;
 	}
 	
 	/**
@@ -80,7 +102,12 @@ public class RespostaListaExercicio {
 	 */
 	public static void imprimirArrayInverso(int[] array)
 	{
-		System.out.print("");
+		for (int i = array.length-1; i >= 0 ; i --) {
+
+			System.out.print(i == 0 ? array[i] : array[i]+",");
+			
+		}
+		
 	}
 	
 	/**
@@ -91,7 +118,23 @@ public class RespostaListaExercicio {
 	 */
 	public static void imprimirElementosPrimos(int[] array) 
 	{
-		System.out.print("");
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == 2) {
+				System.out.print(array[i] + " ");
+			} else if (array[i] > 2) {
+				boolean isarray = true;
+				for (int j = 2; j < array[i]; j++) {
+					if (array[i] % j == 0) {
+						isarray = false;
+						break;
+					}
+				}
+				if (isarray) {
+					System.out.print(array[i] + " ");
+				}
+			}
+		}
+		
 	}
 	
 	
@@ -103,7 +146,12 @@ public class RespostaListaExercicio {
 	 */
 	public static void imprimirElementosImpares(int[] array) 
 	{
-		System.out.print("");
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] % 2 != 0) {
+				System.out.print(array[i]+" ");
+			}
+		}
+		
 	}
 	
 	
@@ -115,7 +163,11 @@ public class RespostaListaExercicio {
 	 */
 	public static void imprimirElementosPares(int[] array) 
 	{
-		System.out.print("");
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] % 2 == 0) {
+				System.out.print(array[i]+" ");
+			}
+		}
 	}
 	
 	
@@ -125,10 +177,21 @@ public class RespostaListaExercicio {
 	 * após o último elemento. Utilize System.out.print()
 	 * @param array
 	 */
-	public static void imprimirMaiorMenorElemento(int[] array) 
-	{
-		System.out.print("");
-	}
+		public static void imprimirMaiorMenorElemento(int[] array)  {
+			
+			int maior = array[0];
+			int menor = array[0];
+			for (int i = 1; i < array.length; i++) {
+				if (array[i] > maior) {
+					maior = array[i];
+				}
+				if (array[i] < menor) {
+					menor = array[i];
+				}
+			}
+			System.out.print(maior + " " + menor + " ");
+			
+		}
 	
 	/**
 	 * O método calcula a média aritmética dos elementos de um array de inteiros. 
@@ -136,9 +199,17 @@ public class RespostaListaExercicio {
 	 * @param array
 	 * @return media
 	 */
-	public static float calcularMediaAritmetica(int[] array) 
-	{
-		return 0f;
+	public static float calcularMediaAritmetica(int[] array) {
+		
+		int soma = 0;
+		for (int i = 0; i < array.length; i++) {
+			soma += array[i];
+		}
+		float media = (float) soma / array.length;
+		return media;
+	}
+		
 	}
 	
-}
+	
+
