@@ -1,12 +1,13 @@
 package org.exercicio.banco.template.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
 *
-* Nome:
-* Curso:
-* Matrícula:
+* Nome: Flávio Lucas Gomes da Silva 	
+* Curso: TSI 
+* Matrícula: ???
 * 
 */
 public class Cliente {
@@ -31,10 +32,15 @@ public class Cliente {
      * @param c
      */
     public void adicionarConta(ContaBancaria c) {
-
-    }
-
     
+        if (contas.contains(c)) {
+            System.out.print("A conta jah estah associada a este cliente.");
+        } else {
+            contas.add(c);
+            System.out.print("Conta adicionada com sucesso!");
+        }
+    	
+} 
     /**
      * O mehtodo recebe como argumento uma contabancaria a ser removida 
      * do arraylist de contas do cliente. Antes de remover, verifique se a 
@@ -46,6 +52,8 @@ public class Cliente {
      */
     public void removerConta(ContaBancaria c) {
 
+
+    	
     }
 
     /**
@@ -96,8 +104,35 @@ public class Cliente {
     public void setContas(ArrayList<ContaBancaria> contas) {
 		this.contas = contas;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(contas, cpf, nome);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(contas, other.contas) && Objects.equals(cpf, other.cpf)
+				&& Objects.equals(nome, other.nome);
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", contas=" + contas + "]";
+	}
       
     // getters e setters omitidos
     
 }
+
+
+
+
 
